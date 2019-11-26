@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerSound;
     // Private variables
     private Rigidbody2D rBody;
-    
+    public Vector2 movement;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
     //Horizantal Movement
     void FixedUpdate()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0f);
+        movement = new Vector2(Input.GetAxis("Horizontal"), 0f);
+        //Debug.Log(movement);
         animator.SetFloat("Speed", runDirect);
         Debug.Log(runDirect);
         JumpCheck();
