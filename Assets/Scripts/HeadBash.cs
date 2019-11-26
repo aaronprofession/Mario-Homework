@@ -19,7 +19,11 @@ public class HeadBash : MonoBehaviour
             audio.Play();
             Instantiate(brickAnim);
         }
-        Destroy(other.gameObject);
+        if (other.tag !="MainCamera")
+        {
+            Destroy(other.gameObject);
+        }
+        
     }
    
 }
