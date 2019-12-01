@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour
         {
             characterFlip.x = -1;
             runDirect = -1;
-            Debug.Log("Character is Flipped Left");
+           // Debug.Log("Character is Flipped Left");
         }
         if (Input.GetAxis("Horizontal") > 0)
         {
             characterFlip.x = 1;
             runDirect = 1;
-            Debug.Log("Character is Flipped Right");
+           // Debug.Log("Character is Flipped Right");
         }
         if (Input.GetAxis("Horizontal") == 0)
         {
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(Input.GetAxis("Horizontal"), 0f);
         //Debug.Log(movement);
         animator.SetFloat("Speed", runDirect);
-        Debug.Log(runDirect);
+        //Debug.Log(runDirect);
         JumpCheck();
         rBody.position += movement * Time.deltaTime * speed;
     }

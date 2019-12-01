@@ -15,31 +15,28 @@ public class CamMoveTrack : MonoBehaviour
 
         camBody = GetComponentInParent<Rigidbody2D>();
     }
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if(other.gameObject.tag == "Player")
-    //    {
-    //        Rigidbody2D camBody = GetComponentInParent<Rigidbody2D>();
-    //        camBody.isKinematic = false;
-    //    }
-    //}
-    //private void OnCollisionExit2D(Collision2D other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        Rigidbody2D camBody = GetComponentInParent<Rigidbody2D>();
-    //        camBody.isKinematic = true;
-    //    }
-    //}
-   
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        float step = speed * Time.deltaTime;
-        Rigidbody2D pb = thePlayer.GetComponent<Rigidbody2D>();
-        
-        Vector2 playV = pb.position;
-        playV.y = camBody.position.y;
-        Vector2 camV = new Vector2(camBody.position.x, camBody.position.y);
-        Vector2.MoveTowards(transform.position, pb.position, step);
+        if (other.gameObject.tag == "Player")
+        {
+            Rigidbody2D camBody = GetComponentInParent<Rigidbody2D>();
+            camBody.isKinematic = false;
+        }
+        else
+        {
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
+        }
     }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Rigidbody2D camBody = GetComponentInParent<Rigidbody2D>();
+            camBody.isKinematic = true;
+            camBody.velocity = new Vector2(0,0);
+        }
+    }
+
+
+
 }
