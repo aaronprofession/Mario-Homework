@@ -13,7 +13,7 @@ public class GroundCheck : MonoBehaviour
     //isGrounded
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Ground")
+        if (collision.tag == "Ground" || collision.tag == "MysteryBox")
         {
             Player.GetComponent<PlayerController>().isGrounded = true;
             Debug.Log("Player Grounded.");
@@ -23,7 +23,7 @@ public class GroundCheck : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
 
     {
-        if (collision.tag == "Ground")
+        if (collision.tag == "Ground" || collision.tag == "MysteryBox")
         {
             Player.GetComponent<PlayerController>().isGrounded = false;
             Debug.Log("Player in Air.");

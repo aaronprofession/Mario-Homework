@@ -19,9 +19,17 @@ public class HeadBash : MonoBehaviour
             audio.Play();
             Instantiate(brickAnim);
         }
-       
-        if (other.tag != "MainCamera" && other.tag != "MysteryBox")
+       if(other.tag == "MysteryEdge")
         {
+            audio.clip = aclips[1];
+            audio.Play();
+            
+
+        }
+        if (other.tag != "MainCamera" && other.tag != "MysteryBox" && other.tag != "MysteryEdge")
+            
+        {
+            
             Destroy(other.gameObject);
         }
 
